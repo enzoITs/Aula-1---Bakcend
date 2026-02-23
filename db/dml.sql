@@ -19,9 +19,51 @@ INSERT INTO temporadas (ano) VALUES
 (2019),
 (2023);
 
-INSERT INTO campeonatos (pilotos_id_piloto, equipes_id_equipe, temporadas_id_temporada) VALUES
-(5, 4, 1),
-(5, 4, 2),
-(1, 1, 3),
-(2, 2, 4),
-(4, 3, 5);
+INSERT INTO campeonatos (pilotos_id_piloto, equipes_id_equipe, temporadas_id_temporada)
+SELECT p.id_piloto, e.id_equipe, t.id_temporada
+FROM pilotos p
+JOIN equipes e
+JOIN temporadas t
+WHERE p.nome = 'Ayrton Senna'
+  AND e.nome = 'McLaren'
+  AND t.ano = 1991
+
+UNION ALL
+
+SELECT p.id_piloto, e.id_equipe, t.id_temporada
+FROM pilotos p
+JOIN equipes e
+JOIN temporadas t
+WHERE p.nome = 'Ayrton Senna'
+  AND e.nome = 'McLaren'
+  AND t.ano = 1994
+
+UNION ALL
+
+SELECT p.id_piloto, e.id_equipe, t.id_temporada
+FROM pilotos p
+JOIN equipes e
+JOIN temporadas t
+WHERE p.nome = 'Michael Schumacher'
+  AND e.nome = 'Ferrari'
+  AND t.ano = 2002
+
+UNION ALL
+
+SELECT p.id_piloto, e.id_equipe, t.id_temporada
+FROM pilotos p
+JOIN equipes e
+JOIN temporadas t
+WHERE p.nome = 'Lewis Hamilton'
+  AND e.nome = 'Mercedes'
+  AND t.ano = 2019
+
+UNION ALL
+
+SELECT p.id_piloto, e.id_equipe, t.id_temporada
+FROM pilotos p
+JOIN equipes e
+JOIN temporadas t
+WHERE p.nome = 'Max Verstappen'
+  AND e.nome = 'Red Bull Racing'
+  AND t.ano = 2023;
